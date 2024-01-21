@@ -124,7 +124,7 @@ def generate_and_save_trading_signals(stock_data, tickers):
         signals['Buy_Signal'] = (signals['RSI'] < 30) & (signals['MACD'] > signals['Signal'])
         signals['Sell_Signal'] = (signals['RSI'] > 70) & (signals['MACD'] < signals['Signal'])
 
-        signals.to_csv(f'/Users/tahsinyigitgultekin/Desktop/AnalysisStock/trading_signals_{ticker}.csv')
+        signals.to_csv(f'{save_path}trading_signals_{ticker}.csv')
 
 
 
@@ -167,22 +167,22 @@ if __name__ == "__main__":
 
     # Perform portfolio optimization
     optimized_portfolio = optimize_portfolio(stock_data['Close'])
-    pd.Series(optimized_portfolio).to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/optimized_portfolio.csv')
+    pd.Series(optimized_portfolio).to_csv('{save_path}optimized_portfolio.csv')
 
 
     # Plot and save interactive charts
     ma_fig = plot_interactive_ma(stock_data['Close'], sma, ema)
     rsi_fig = plot_interactive_rsi(rsi)
-    ma_fig.write_image('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/ma_chart.png')
-    rsi_fig.write_image('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/rsi_chart.png')
+    ma_fig.write_image('{save_path}ma_chart.png')
+    rsi_fig.write_image('{save_path}rsi_chart.png')
 
     # Save other data and analysis results to specified directory
-    stock_data.to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/stock_data.csv')
-    statistics.to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/statistics.csv')
-    time_series_fig.write_image('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/time_series_fig.png')
-    volatility_fig.write_image('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/volatility_fig.png')
-    correlation_fig.write_image('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/correlation_fig.png')
-    sma.to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/sma_data.csv')
-    ema.to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/ema_data.csv')
-    rsi.to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/rsi_data.csv')
-    macd.to_csv('/Users/tahsinyigitgultekin/Desktop/AnalysisStock/macd_data.csv')
+    stock_data.to_csv('{save_path}stock_data.csv')
+    statistics.to_csv('{save_path}statistics.csv')
+    time_series_fig.write_image('{save_path}time_series_fig.png')
+    volatility_fig.write_image('{save_path}volatility_fig.png')
+    correlation_fig.write_image('{save_path}correlation_fig.png')
+    sma.to_csv('{save_path}sma_data.csv')
+    ema.to_csv('{save_path}ema_data.csv')
+    rsi.to_csv('{save_path}rsi_data.csv')
+    macd.to_csv('{save_path}macd_data.csv')
